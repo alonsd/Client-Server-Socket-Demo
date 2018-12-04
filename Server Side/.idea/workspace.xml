@@ -14,7 +14,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
+            <state relative-caret-position="155">
               <caret line="9" selection-start-line="9" selection-end-line="9" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -26,8 +26,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/ClientThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="114" column="49" lean-forward="true" selection-start-line="114" selection-start-column="49" selection-end-line="114" selection-end-column="49" />
+            <state relative-caret-position="737">
+              <caret line="121" column="55" selection-start-line="120" selection-start-column="39" selection-end-line="121" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,6 +60,7 @@
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -78,41 +79,21 @@
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Server Side Java project - alon shlider" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Server Side Java project - alon shlider" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Server Side Java project - alon shlider" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Server Side Java project - alon shlider" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Server Side Java project - alon shlider" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Server Side Java project - alon shlider" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="company" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542735410213" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="C:/Program Files/Git/git-bash.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -176,8 +157,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26066098" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26332623" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -193,9 +175,8 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Messages" order="10" />
-      <window_info anchor="right" id="Maven" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -204,6 +185,7 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info anchor="right" id="Maven" order="8" />
     </layout>
   </component>
   <component name="debuggerHistoryManager">
@@ -240,6 +222,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Circle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2077">
@@ -252,20 +244,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/ClientThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="114" column="49" lean-forward="true" selection-start-line="114" selection-start-column="49" selection-end-line="114" selection-end-column="49" />
+        <state relative-caret-position="737">
+          <caret line="121" column="55" selection-start-line="120" selection-start-column="39" selection-end-line="121" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

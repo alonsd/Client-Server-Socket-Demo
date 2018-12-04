@@ -103,21 +103,8 @@ public class ClientThread extends Thread {
             throw new IOException("invalid string length check server run method");
         name = new String(bytes);
 
-        //for ints:
-        buffer = new byte[4];
-        actuallyRead = inputStream.read(buffer);
-        if (actuallyRead != 4)
-            return true;
-        int x = ByteBuffer.wrap(buffer).getInt();
-        actuallyRead = inputStream.read(buffer);
-        if (actuallyRead != 4)
-            return true;
-        int y = ByteBuffer.wrap(buffer).getInt();
-        actuallyRead = inputStream.read(buffer);
-        if (actuallyRead != 4)
-            return true;
-        int radius = ByteBuffer.wrap(buffer).getInt();
-        Circle circle = new Circle(x, y, radius);
+        //for object:
+        Circle circle = new Circle(inputStream);
         Main.hashMap.put(name, circle);
         System.out.println("circle created: " + name + " " + circle);
         outputStream.write(name.length());

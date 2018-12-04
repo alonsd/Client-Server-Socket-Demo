@@ -82,15 +82,19 @@ public class Main {
         int num3 = scanner.nextInt();
         scanner.nextLine();
         int length = name.length();
+        //writing string to server:
         outputStream.write(length);
         outputStream.write(name.getBytes());
-        byte[] buffer = new byte[4];
+        //writing other params to server:
+        /*byte[] buffer = new byte[4];
         ByteBuffer.wrap(buffer).putInt(num1);
         outputStream.write(buffer);
         ByteBuffer.wrap(buffer).putInt(num2);
         outputStream.write(buffer);
-        ByteBuffer.wrap(buffer).putInt(num3);
-        outputStream.write(buffer);
+        ByteBuffer.wrap(buffer).putInt(num3);*/
+        Circle c = new Circle(num1,num2,num3);
+        c.write(outputStream);
+        //outputStream.write(buffer);
         //receiving from server:
         //receiving the string name:
         int stringlength = inputStream.read();
