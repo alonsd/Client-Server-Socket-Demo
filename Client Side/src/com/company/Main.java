@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.nio.ByteBuffer;
 import java.util.Scanner;
 
 public class Main {
@@ -18,6 +17,8 @@ public class Main {
     public static final int ADD_CIRLCE = 1;
     public static final int CONTAINS_NAME = 100;
     public static final int DOES_NOT_CONTAIN_NAME = 101;
+    public static final int DELETE_CIRCLE = 1;
+    public static final int DELETE_SUCCESSFULLY = 51;
 
     public static void main(String[] args) {
         Socket socket = null;
@@ -51,8 +52,27 @@ public class Main {
                         if ((read = inputStream.read()) == -1)
                             throw new IOException("illegal boolean from server");
                         //int intBoolean = inputStream.read(intBytes);
-                        if (read == CONTAINS_NAME)
+                        if (read == CONTAINS_NAME) {
                             System.out.println("found circle: " + name);
+                            int editChoice = printEditCircleMenu();
+                            switch (editChoice){
+                                case 1:
+                                    //sending delete request:
+                                    outputStream.write(DELETE_CIRCLE);
+                                    System.out.println("successfully deleted circle " + name);
+                                    //getting back result:
+                                    /*byte[] bytes = new byte[4];
+                                    int result = inputStream.read(bytes);
+                                    if (result == DELETE_SUCCESSFULLY){
+                                        System.out.println("successfully deleted circle " + name);
+                                        printMenu();
+                                    }*/
+                                    break;
+                                case 2:
+                                    printMenu();
+                                    break;
+                            }
+                        }
                         else if (read == DOES_NOT_CONTAIN_NAME)
                             System.out.println("did not find circle: " + name);
                         break;
@@ -70,6 +90,8 @@ public class Main {
         }
     }
 
+
+
     private static void createCircleOnServer(InputStream inputStream, OutputStream outputStream, Scanner scanner) throws IOException {
         //sending to server:
         System.out.println("enter key name for the new circle:");
@@ -85,13 +107,7 @@ public class Main {
         //writing string to server:
         outputStream.write(length);
         outputStream.write(name.getBytes());
-        //writing other params to server:
-        /*byte[] buffer = new byte[4];
-        ByteBuffer.wrap(buffer).putInt(num1);
-        outputStream.write(buffer);
-        ByteBuffer.wrap(buffer).putInt(num2);
-        outputStream.write(buffer);
-        ByteBuffer.wrap(buffer).putInt(num3);*/
+        //writing object to server:
         Circle c = new Circle(num1,num2,num3);
         c.write(outputStream);
         //outputStream.write(buffer);
@@ -121,6 +137,18 @@ public class Main {
         if (choice < 1 || choice > 3) {
             System.out.println("invalid choice!");
             return printMenu();
+        }
+        return choice;
+    }
+    public static int printEditCircleMenu() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Select an option:");
+        System.out.println("1. delete this circle");
+        System.out.println("2. do nothing and return back");
+        int choice = readIntegerFromConsole("your choice: ");
+        if (choice < 1 || choice > 2) {
+            System.out.println("invalid choice!");
+            return printEditCircleMenu();
         }
         return choice;
     }

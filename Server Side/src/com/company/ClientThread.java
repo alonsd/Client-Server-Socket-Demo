@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.nio.ByteBuffer;
 
 
 public class ClientThread extends Thread {
@@ -13,6 +12,8 @@ public class ClientThread extends Thread {
     private static final int CHECK_CIRCLE = 2;
     public static final int CONTAINS_NAME = 100;
     public static final int DOES_NOT_CONTAIN_NAME = 101;
+    public static final int DELETE_CIRCLE = 1;
+    public static final int DELTE_SUCCESSFULLY = 51;
     private Socket socket;
     private InputStream inputStream;
     private OutputStream outputStream;
@@ -52,8 +53,19 @@ public class ClientThread extends Thread {
                     name = new String(bytes);
                     //if there is that name in the map
                     if (Main.hashMap.containsKey(name)) {
+                        //sending answer:
                         outputStream.write(CONTAINS_NAME);
                         System.out.println("checked name: " + name + " and result was true");
+                        //getting choice again for editing hashmap:
+                        byte[] editBytes = new byte[4];
+                        int editChoice = inputStream.read(editBytes);
+                        if (editChoice == DELETE_CIRCLE){
+                            //deleting on hashmap:
+                            Main.hashMap.remove(name);
+                            System.out.println("removed key named: " + name + " by request from user");
+                            //sending result back:
+                            outputStream.write(DELTE_SUCCESSFULLY);
+                        }
                     } else {
                         outputStream.write(DOES_NOT_CONTAIN_NAME);
                         System.out.println("checked name: " + name + " and result was false");
