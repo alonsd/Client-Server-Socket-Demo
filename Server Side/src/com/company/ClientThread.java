@@ -62,7 +62,7 @@ public class ClientThread extends Thread {
                         if (editChoice == DELETE_CIRCLE){
                             //deleting on hashmap:
                             Main.hashMap.remove(name);
-                            System.out.println("removed key named: " + name + " by request from user");
+                            System.out.println("removed circle named: " + name + " by request from user");
                             //sending result back:
                             outputStream.write(DELTE_SUCCESSFULLY);
                         }

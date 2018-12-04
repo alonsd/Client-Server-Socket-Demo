@@ -59,14 +59,13 @@ public class Main {
                                 case 1:
                                     //sending delete request:
                                     outputStream.write(DELETE_CIRCLE);
-                                    System.out.println("successfully deleted circle " + name);
+                                    //System.out.println("successfully deleted circle " + name);
                                     //getting back result:
-                                    /*byte[] bytes = new byte[4];
-                                    int result = inputStream.read(bytes);
+                                    int result = inputStream.read();
                                     if (result == DELETE_SUCCESSFULLY){
                                         System.out.println("successfully deleted circle " + name);
                                         printMenu();
-                                    }*/
+                                    }
                                     break;
                                 case 2:
                                     printMenu();
