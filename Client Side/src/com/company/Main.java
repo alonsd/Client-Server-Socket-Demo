@@ -19,6 +19,7 @@ public class Main {
     public static final int DOES_NOT_CONTAIN_NAME = 101;
     public static final int DELETE_CIRCLE = 1;
     public static final int DELETE_SUCCESSFULLY = 51;
+    public static final int Y_STARTING_POSITION = 15;
 
     public static void main(String[] args) {
         Socket socket = null;
@@ -174,9 +175,10 @@ public class Main {
     }
 
     public static void circleDrawer(int posX, int posY, int radius) {
-        int howMuchToIncreaseX = radius/posX;
-        posX *= howMuchToIncreaseX;
-        posY += 10;
+        int howMuchToIncrease = radius/posX;
+        posX *= howMuchToIncrease;
+        posY += Y_STARTING_POSITION;
+        posY *= howMuchToIncrease;
         for (int i = 0;i <= posX + radius; i++) {
             for (int j = 1;j <=posY + radius; j++) {
                 int xSquared = (i - posX)*(i - posX);
