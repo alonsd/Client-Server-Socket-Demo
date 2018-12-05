@@ -3,4 +3,4 @@ hacker-u colleage java project.
 
 a basic client-server java program with a UI based on console. 
 
-![alt text](https://www.photobox.co.uk/my/photo?album_id=5502974110&photo_id=501412586029)
+<img src="https://github.com/alonsd/Java-Project/blob/master/229ba6cb-3567-4c50-b9e8-6dc2e20c9420.jpg" width="400"/>
