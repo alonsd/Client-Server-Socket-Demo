@@ -7,13 +7,13 @@ import java.nio.ByteBuffer;
 
 public class Circle implements Writable {
 
-    private int x,y,radius;
+    private int radius;
+    private Point point;
 
-    public Circle(int x, int y, int radius) {
-        this.x = x;
-        this.y = y;
+
+    public Circle(Point point, int radius) {
         this.radius = radius;
-
+        this.point = point;
     }
 
     public Circle(InputStream inputStream) throws IOException {
@@ -24,20 +24,12 @@ public class Circle implements Writable {
         write(outputStream);
     }
 
-    public int getX() {
-        return x;
+    public Point getPoint() {
+        return point;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
+    public void setPoint(Point point) {
+        this.point = point;
     }
 
     public int getRadius() {
@@ -49,36 +41,29 @@ public class Circle implements Writable {
     }
 
     @Override
-    public String toString() {
-        return "(x: " + x + ", y: " + y + ", radius: " + radius + ")";
-    }
-
-    @Override
     public void write(OutputStream outputStream) throws IOException {
         byte[] intBytes = new byte[4];
-        ByteBuffer.wrap(intBytes).putInt(x);
-        outputStream.write(intBytes);
-        ByteBuffer.wrap(intBytes).putInt(y);
-        outputStream.write(intBytes);
+        point.write(outputStream);
         ByteBuffer.wrap(intBytes).putInt(radius);
         outputStream.write(intBytes);
     }
 
     @Override
+    public String toString() {
+        return "\n" +
+                "{new Point with x: " + point.getX() +
+                " and y: " + point.getY() +
+                "\n" +
+                " and the radius of the new Circle is: " + radius + "}";
+    }
+
+    @Override
     public void read(InputStream inputStream) throws IOException {
+        //getting point:
+        point = new Point(inputStream);
+        //getting radius
         byte[] intBytes = new byte[4];
         int actuallyRead;
-        //getting x:
-        actuallyRead = inputStream.read(intBytes);
-        if (actuallyRead != 4)
-            throw new IOException("error reading x from stream, did not get 4 bytes");
-        x = ByteBuffer.wrap(intBytes).getInt();
-        //getting y:
-        actuallyRead = inputStream.read(intBytes);
-        if (actuallyRead != 4)
-            throw new IOException("error reading y from stream, did not get 4 bytes");
-        y = ByteBuffer.wrap(intBytes).getInt();
-        //getting radius
         actuallyRead = inputStream.read(intBytes);
         if (actuallyRead != 4)
             throw new IOException("error reading radius from stream, did not get 4 bytes");

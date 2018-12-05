@@ -63,7 +63,9 @@ public class Main {
                                     //getting back result:
                                     int result = inputStream.read();
                                     if (result == DELETE_SUCCESSFULLY){
-                                        System.out.println("successfully deleted circle " + name);
+                                        System.out.println("-------------\n" +
+                                                "successfully deleted circle " + name + "\n" +
+                                                "-------------");
                                         printMenu();
                                     }
                                     break;
@@ -107,7 +109,7 @@ public class Main {
         outputStream.write(length);
         outputStream.write(name.getBytes());
         //writing object to server:
-        Circle c = new Circle(num1,num2,num3);
+        Circle c = new Circle(new Point(num1,num2), num3);
         c.write(outputStream);
         //outputStream.write(buffer);
         //receiving from server:
@@ -121,9 +123,14 @@ public class Main {
         if (actuallyRead != stringlength)
             throw new IOException("invalid string check client row 90");
         circleName = new String(bytes);
-        //receiving the circle object:
+        //receiving the circle object from server:
         Circle circle = new Circle(inputStream);
-        System.out.println("successfully created a circle named " + circleName + " with: " + circle);
+        System.out.println("-----------------\n" +
+                "successfully created a circle named " + circleName +
+                " with: " + circle.toString() +"\n");
+        circleDrawer(num1,num2,num3);
+        System.out.println("\n" +
+                "-----------------");
     }
 
     public static int printMenu() {
@@ -164,5 +171,23 @@ public class Main {
             return readIntegerFromConsole(instruction);
         }
         return x;
+    }
+
+    public static void circleDrawer(int posX, int posY, int radius) {
+        int howMuchToIncreaseX = radius/posX;
+        posX *= howMuchToIncreaseX;
+        posY += 10;
+        for (int i = 0;i <= posX + radius; i++) {
+            for (int j = 1;j <=posY + radius; j++) {
+                int xSquared = (i - posX)*(i - posX);
+                int ySquared = (j - posY)*(j - posY);
+                if (Math.abs(xSquared + ySquared - radius * radius) < radius) {
+                    System.out.print("#");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
     }
 }

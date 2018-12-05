@@ -118,7 +118,7 @@ public class ClientThread extends Thread {
         //for object:
         Circle circle = new Circle(inputStream);
         Main.hashMap.put(name, circle);
-        System.out.println("circle created: " + name + " " + circle);
+        System.out.println("circle created: " + name + " " + circle.toString());
         outputStream.write(name.length());
         outputStream.write(name.getBytes());
         circle.write(outputStream);
