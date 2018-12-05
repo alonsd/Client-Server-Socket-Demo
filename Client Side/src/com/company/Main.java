@@ -20,6 +20,7 @@ public class Main {
     public static final int DELETE_CIRCLE = 1;
     public static final int DELETE_SUCCESSFULLY = 51;
     public static final int Y_STARTING_POSITION = 15;
+    public static final int X_STARTING_POSITION = 3;
 
     public static void main(String[] args) {
         Socket socket = null;
@@ -102,7 +103,8 @@ public class Main {
         int num1 = scanner.nextInt();
         System.out.println("please enter y parameter for circle:");
         int num2 = scanner.nextInt();
-        System.out.println("please enter radius parameter for circle:");
+        System.out.println("please enter radius parameter for circle:" +
+                "\n(warning - more than 15 on this parameter will create a HUGE circle)");
         int num3 = scanner.nextInt();
         scanner.nextLine();
         int length = name.length();
@@ -127,8 +129,9 @@ public class Main {
         //receiving the circle object from server:
         Circle circle = new Circle(inputStream);
         System.out.println("-----------------\n" +
-                "successfully created a circle named " + circleName +
-                " with: " + circle.toString() +"\n");
+                "successfully created a circle on server named " + circleName +
+                " with: " + circle.toString() +"\n" +
+                "a scheme of your circle will be drawn based on radius: \n");
         circleDrawer(num1,num2,num3);
         System.out.println("\n" +
                 "-----------------");
@@ -176,6 +179,7 @@ public class Main {
 
     public static void circleDrawer(int posX, int posY, int radius) {
         int howMuchToIncrease = radius/posX;
+        posX += X_STARTING_POSITION;
         posX *= howMuchToIncrease;
         posY += Y_STARTING_POSITION;
         posY *= howMuchToIncrease;

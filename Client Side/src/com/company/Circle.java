@@ -51,10 +51,9 @@ public class Circle implements Writable {
     @Override
     public String toString() {
         return "\n" +
-                "{new Point with x: " + point.getX() +
-                " and y: " + point.getY() +
-                "\n" +
-                " and the radius of the new Circle is: " + radius + "}";
+                "x: " + point.getX() + "\n" +
+                "y: " + point.getY() + "\n" +
+                "radius: " + radius;
     }
 
     @Override

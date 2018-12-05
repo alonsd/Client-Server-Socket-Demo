@@ -28,9 +28,7 @@ public class ClientThread extends Thread {
         try {
             inputStream = socket.getInputStream();
             outputStream = socket.getOutputStream();
-            System.out.println("stam0");
             int actuallyRead = inputStream.read();
-            System.out.println("stam1");
             if (actuallyRead == -1)
                 return;
             int choice = actuallyRead;
