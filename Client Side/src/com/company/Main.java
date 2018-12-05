@@ -184,9 +184,19 @@ public class Main {
                 int xSquared = (i - posX)*(i - posX);
                 int ySquared = (j - posY)*(j - posY);
                 if (Math.abs(xSquared + ySquared - radius * radius) < radius) {
-                    System.out.print("#");
+                    try {
+                        System.out.print("#");
+                        Thread.sleep(5);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 } else {
-                    System.out.print(" ");
+                    try {
+                        System.out.print(" ");
+                        Thread.sleep(10);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
             System.out.println();
