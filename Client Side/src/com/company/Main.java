@@ -20,7 +20,7 @@ public class Main {
     public static final int DELETE_CIRCLE = 1;
     public static final int DELETE_SUCCESSFULLY = 51;
     public static final int Y_STARTING_POSITION = 15;
-    public static final int X_STARTING_POSITION = 3;
+    public static final int X_STARTING_POSITION = 15;
 
     public static void main(String[] args) {
         Socket socket = null;
@@ -57,14 +57,14 @@ public class Main {
                         if (read == CONTAINS_NAME) {
                             System.out.println("found circle: " + name);
                             int editChoice = printEditCircleMenu();
-                            switch (editChoice){
+                            switch (editChoice) {
                                 case 1:
                                     //sending delete request:
                                     outputStream.write(DELETE_CIRCLE);
                                     //System.out.println("successfully deleted circle " + name);
                                     //getting back result:
                                     int result = inputStream.read();
-                                    if (result == DELETE_SUCCESSFULLY){
+                                    if (result == DELETE_SUCCESSFULLY) {
                                         System.out.println("-------------\n" +
                                                 "successfully deleted circle " + name + "\n" +
                                                 "-------------");
@@ -75,8 +75,7 @@ public class Main {
                                     printMenu();
                                     break;
                             }
-                        }
-                        else if (read == DOES_NOT_CONTAIN_NAME)
+                        } else if (read == DOES_NOT_CONTAIN_NAME)
                             System.out.println("did not find circle: " + name);
                         break;
                     case EXIT:
@@ -94,25 +93,26 @@ public class Main {
     }
 
 
-
     private static void createCircleOnServer(InputStream inputStream, OutputStream outputStream, Scanner scanner) throws IOException {
         //sending to server:
         System.out.println("enter key name for the new circle:");
         String name = scanner.nextLine();
-        System.out.println("please enter x parameter for circle:");
-        int num1 = scanner.nextInt();
-        System.out.println("please enter y parameter for circle:");
-        int num2 = scanner.nextInt();
+        System.out.println("please enter x parameter for circle: \n" +
+                "(recommended value is  between 1 and 15)");
+        int xParam = scanner.nextInt();
+        System.out.println("please enter y parameter for circle: \n" +
+                "(recommended value is  between 1 and 15)");
+        int yParam = scanner.nextInt();
         System.out.println("please enter radius parameter for circle:" +
-                "\n(warning - more than 15 on this parameter will create a HUGE circle)");
-        int num3 = scanner.nextInt();
+                "\n(recommended value is  between 1 and 15)");
+        int radiusParam = scanner.nextInt();
         scanner.nextLine();
         int length = name.length();
         //writing string to server:
         outputStream.write(length);
         outputStream.write(name.getBytes());
         //writing object to server:
-        Circle c = new Circle(new Point(num1,num2), num3);
+        Circle c = new Circle(new Point(xParam, yParam), radiusParam);
         c.write(outputStream);
         //outputStream.write(buffer);
         //receiving from server:
@@ -130,9 +130,19 @@ public class Main {
         Circle circle = new Circle(inputStream);
         System.out.println("-----------------\n" +
                 "successfully created a circle on server named " + circleName +
-                " with: " + circle.toString() +"\n" +
+                " with: " + circle.toString() + "\n" +
                 "a scheme of your circle will be drawn based on radius: \n");
-        circleDrawer(num1,num2,num3);
+        if (radiusParam < 0 || radiusParam > 15 ||
+                xParam > 15 || xParam < 0 ||
+                yParam > 15 || yParam < 0) {
+            System.out.println("------------------\n" +
+                    "ERROR: Can't print this circle because of console limitation.\n" +
+                    "All circle parameters must be between 0 and 15 excluding 0 in order to be printed.\n" +
+                    "Still, circle has been fully received and saved by the server\n" +
+                    "------------------");
+        } else {
+            circleDrawer(xParam, yParam, radiusParam);
+        }
         System.out.println("\n" +
                 "-----------------");
     }
@@ -150,6 +160,7 @@ public class Main {
         }
         return choice;
     }
+
     public static int printEditCircleMenu() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Select an option:");
@@ -177,27 +188,24 @@ public class Main {
         return x;
     }
 
-    public static void circleDrawer(int posX, int posY, int radius) {
-        int howMuchToIncrease = radius/posX;
-        posX += X_STARTING_POSITION;
-        posX *= howMuchToIncrease;
-        posY += Y_STARTING_POSITION;
-        posY *= howMuchToIncrease;
-        for (int i = 0;i <= posX + radius; i++) {
-            for (int j = 1;j <=posY + radius; j++) {
-                int xSquared = (i - posX)*(i - posX);
-                int ySquared = (j - posY)*(j - posY);
+    public static void circleDrawer(int xPos, int yPos, int radius) {
+        xPos += X_STARTING_POSITION;
+        yPos += Y_STARTING_POSITION;
+        for (int i = 0; i <= xPos + radius; i++) {
+            for (int j = 1; j <= yPos + radius; j++) {
+                int xSquared = (i - xPos) * (i - xPos);
+                int ySquared = (j - yPos) * (j - yPos);
                 if (Math.abs(xSquared + ySquared - radius * radius) < radius) {
                     try {
                         System.out.print("#");
-                        Thread.sleep(5);
+                        Thread.sleep((long) (5 / Math.sqrt(radius)));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 } else {
                     try {
-                        System.out.print(" ");
-                        Thread.sleep(10);
+                        System.out.print("-");
+                        Thread.sleep((long) (10 / Math.sqrt(radius)));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
