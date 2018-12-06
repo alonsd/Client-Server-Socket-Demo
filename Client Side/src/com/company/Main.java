@@ -138,7 +138,7 @@ public class Main {
             System.out.println("------------------\n" +
                     "ERROR: Can't print this circle because of console limitation.\n" +
                     "All circle parameters must be between 0 and 15 excluding 0 in order to be printed.\n" +
-                    "Still, circle has been fully received and saved by the server\n" +
+                    "Still, circle has been fully received and saved by the server.\n" +
                     "------------------");
         } else {
             circleDrawer(xParam, yParam, radiusParam);
