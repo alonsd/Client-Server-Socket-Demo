@@ -1,8 +1,6 @@
 package com.company;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 
 
@@ -14,6 +12,8 @@ public class ClientThread extends Thread {
     public static final int DOES_NOT_CONTAIN_NAME = 101;
     public static final int DELETE_CIRCLE = 1;
     public static final int DELTE_SUCCESSFULLY = 51;
+    public static final String PATH = "circles.txt";
+    private static FileOutputStream fileOutputStream;
     private Socket socket;
     private InputStream inputStream;
     private OutputStream outputStream;
@@ -28,6 +28,7 @@ public class ClientThread extends Thread {
         try {
             inputStream = socket.getInputStream();
             outputStream = socket.getOutputStream();
+            fileOutputStream = new FileOutputStream(PATH);
             int actuallyRead = inputStream.read();
             if (actuallyRead == -1)
                 return;
@@ -116,6 +117,7 @@ public class ClientThread extends Thread {
         //for object:
         Circle circle = new Circle(inputStream);
         Main.hashMap.put(name, circle);
+        fileOutputStream.write(circle.toString().getBytes());
         System.out.println("circle created: " + name + " " + circle.toString());
         outputStream.write(name.length());
         outputStream.write(name.getBytes());
