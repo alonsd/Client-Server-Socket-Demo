@@ -116,11 +116,14 @@ public class ClientThread extends Thread {
         //for object:
         Circle circle = new Circle(inputStream);
         Main.hashMap.put(name, circle);
+        //writing the circle data on draft ".txt" file for future use:
         Main.fileOutputStream.write("\n ".getBytes());
         Main.fileOutputStream.write("\n ".getBytes());
         Main.fileOutputStream.write(name.getBytes());
         Main.fileOutputStream.write(circle.toString().getBytes());
+        //printing to server console information about the new server:
         System.out.println("circle created: " + name + " " + circle.toString());
+        //forwarding information to client:
         outputStream.write(name.length());
         outputStream.write(name.getBytes());
         circle.write(outputStream);
