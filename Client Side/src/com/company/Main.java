@@ -100,12 +100,15 @@ public class Main {
         System.out.println("please enter x parameter for circle: \n" +
                 "(recommended value is  between 1 and 15)");
         int xParam = scanner.nextInt();
+        //checkParams(xParam);
         System.out.println("please enter y parameter for circle: \n" +
                 "(recommended value is  between 1 and 15)");
         int yParam = scanner.nextInt();
+        //checkParams(yParam);
         System.out.println("please enter radius parameter for circle:" +
                 "\n(recommended value is  between 1 and 15)");
         int radiusParam = scanner.nextInt();
+        //checkParams(radiusParam);
         scanner.nextLine();
         int length = name.length();
         //writing string to server:
@@ -145,6 +148,16 @@ public class Main {
         }
         System.out.println("\n" +
                 "-----------------");
+    }
+
+    private static void checkParams(String x) {
+        try{
+            int xParam = Integer.valueOf(x);
+        } catch (NumberFormatException e){
+            System.out.println("----------\n" +
+                    "Only numbers accepted.\n" +
+                    "----------");
+        }
     }
 
     public static int printMenu() {

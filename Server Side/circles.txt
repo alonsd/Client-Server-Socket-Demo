@@ -1,0 +1,41 @@
+
+ 
+ moshe the man
+x: 13
+y: 13
+radius: 13
+ 
+ dsfdsfsdf
+x: 0
+y: 0
+radius: 0
+ 
+ alon
+x: 546
+y: 1
+radius: 3
+ 
+ alon
+x: 5
+y: 5
+radius: 5
+ 
+ alon
+x: 5
+y: 5
+radius: 5
+ 
+ alon
+x: 7
+y: 7
+radius: 7
+ 
+ 
+x: 54
+y: 3
+radius: 4
+ 
+ alon
+x: 9
+y: 9
+radius: 9
