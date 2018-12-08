@@ -13,7 +13,6 @@ public class ClientThread extends Thread {
     public static final int DELETE_CIRCLE = 1;
     public static final int DELTE_SUCCESSFULLY = 51;
     public static final String PATH = "circles.txt";
-    private static FileOutputStream fileOutputStream;
     private Socket socket;
     private InputStream inputStream;
     private OutputStream outputStream;
@@ -28,7 +27,7 @@ public class ClientThread extends Thread {
         try {
             inputStream = socket.getInputStream();
             outputStream = socket.getOutputStream();
-            fileOutputStream = new FileOutputStream(PATH);
+            Main.fileOutputStream = new FileOutputStream(PATH, true);
             int actuallyRead = inputStream.read();
             if (actuallyRead == -1)
                 return;
@@ -58,7 +57,7 @@ public class ClientThread extends Thread {
                         //getting choice again for editing hashmap:
                         byte[] editBytes = new byte[4];
                         int editChoice = inputStream.read(editBytes);
-                        if (editChoice == DELETE_CIRCLE){
+                        if (editChoice == DELETE_CIRCLE) {
                             //deleting on hashmap:
                             Main.hashMap.remove(name);
                             System.out.println("removed circle named: " + name + " by request from user");
@@ -117,7 +116,10 @@ public class ClientThread extends Thread {
         //for object:
         Circle circle = new Circle(inputStream);
         Main.hashMap.put(name, circle);
-        fileOutputStream.write(circle.toString().getBytes());
+        Main.fileOutputStream.write("\n ".getBytes());
+        Main.fileOutputStream.write("\n ".getBytes());
+        Main.fileOutputStream.write(name.getBytes());
+        Main.fileOutputStream.write(circle.toString().getBytes());
         System.out.println("circle created: " + name + " " + circle.toString());
         outputStream.write(name.length());
         outputStream.write(name.getBytes());

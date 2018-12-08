@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -10,6 +11,7 @@ public class Main {
 
     public static final int PORT = 3000;
     public static Map<String, Circle> hashMap = new HashMap<>();
+    public static FileOutputStream fileOutputStream;
 
     public static void main(String[] args) {
 
