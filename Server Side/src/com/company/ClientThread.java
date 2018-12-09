@@ -20,6 +20,7 @@ public class ClientThread extends Thread {
 
     public ClientThread(Socket socket) {
         this.socket = socket;
+        //add textWatcher here and initialize it
     }
 
     @Override

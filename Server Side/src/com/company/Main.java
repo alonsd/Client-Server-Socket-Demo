@@ -10,7 +10,7 @@ import java.util.Map;
 public class Main {
 
     public static final int PORT = 3000;
-    public static Map<String, Circle> hashMap = new HashMap<>();
+
     public static FileOutputStream fileOutputStream;
 
 
