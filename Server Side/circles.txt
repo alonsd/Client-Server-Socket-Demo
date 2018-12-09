@@ -39,3 +39,30 @@ radius: 4
 x: 9
 y: 9
 radius: 9
+ 
+ alon
+x: 5
+y: 5
+radius: 5
+ 
+ alon
+x: 5
+y: 5
+radius: 5
+ 
+ alon
+x: 5
+y: 5
+radius: 5
+ 
+ אל
+x: -678045793
+y: 8
+radius: 8
+
+gjg666
+ 
+ alon
+x: 10
+y: 10
+radius: 10

@@ -13,6 +13,7 @@ public class Main {
     public static Map<String, Circle> hashMap = new HashMap<>();
     public static FileOutputStream fileOutputStream;
 
+
     public static void main(String[] args) {
 
         ServerSocket serverSocket = null;

@@ -96,20 +96,18 @@ public class Main {
     private static void createCircleOnServer(InputStream inputStream, OutputStream outputStream, Scanner scanner) throws IOException {
         //sending to server:
         System.out.println("enter key name for the new circle:");
-        String name = scanner.nextLine();
-        System.out.println("please enter x parameter for circle: \n" +
-                "(recommended value is  between 1 and 15)");
-        int xParam = scanner.nextInt();
+        String name = new String(scanner.nextLine());
+        //int xParam = scanner.nextInt();
+        int xParam = readIntegerFromConsole("please enter x parameter for circle: \\n\" +\n" +
+                "\"(recommended value is  between 1 and 15)");
         //checkParams(xParam);
-        System.out.println("please enter y parameter for circle: \n" +
-                "(recommended value is  between 1 and 15)");
-        int yParam = scanner.nextInt();
+        int yParam = readIntegerFromConsole("please enter y parameter for circle: \\n\" +\n" +
+                "                \"(recommended value is  between 1 and 15)");
         //checkParams(yParam);
-        System.out.println("please enter radius parameter for circle:" +
-                "\n(recommended value is  between 1 and 15)");
-        int radiusParam = scanner.nextInt();
+        int radiusParam = readIntegerFromConsole("please enter radius parameter for circle:\" +\n" +
+                "                \"\\n(recommended value is  between 1 and 15)");
         //checkParams(radiusParam);
-        scanner.nextLine();
+        //scanner.nextLine();
         int length = name.length();
         //writing string to server:
         outputStream.write(length);
