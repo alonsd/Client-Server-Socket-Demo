@@ -98,14 +98,14 @@ public class Main {
         System.out.println("enter key name for the new circle:");
         String name = new String(scanner.nextLine());
         //int xParam = scanner.nextInt();
-        int xParam = readIntegerFromConsole("please enter x parameter for circle: \\n\" +\n" +
-                "\"(recommended value is  between 1 and 15)");
+        int xParam = readIntegerFromConsole("please enter x parameter for circle.\n" +
+                "(recommended value is  between 1 and 15) - ");
         //checkParams(xParam);
-        int yParam = readIntegerFromConsole("please enter y parameter for circle: \\n\" +\n" +
-                "                \"(recommended value is  between 1 and 15)");
+        int yParam = readIntegerFromConsole("please enter y parameter for circle.\n" +
+                "(recommended value is  between 1 and 15) - ");
         //checkParams(yParam);
-        int radiusParam = readIntegerFromConsole("please enter radius parameter for circle:\" +\n" +
-                "                \"\\n(recommended value is  between 1 and 15)");
+        int radiusParam = readIntegerFromConsole("please enter radius parameter for circle.\n" +
+                "(recommended value is  between 1 and 15) - ");
         //checkParams(radiusParam);
         //scanner.nextLine();
         int length = name.length();
